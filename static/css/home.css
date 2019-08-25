@@ -1,0 +1,13 @@
+.row .col.s6 {
+    margin-top: 4%;
+    padding: 5%;
+}
+
+button.light-blue.darken-4.waves-effect.waves-light.btn.btn-large.col.s10.offset-s1 {
+    margin-top: 5%;
+}
+
+.resposta {
+    font-size: 20px;
+    color: midnightblue;
+}

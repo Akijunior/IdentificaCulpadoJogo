@@ -1,0 +1,28 @@
+{% extends 'base_templates/base.html' %}
+{% block content %}
+    {% load material_form %}
+
+    <div class="col s3"></div>
+    <div class="col s6 z-depth-3">
+        <div class="flow-text">
+
+            <a href="{% url 'home' %}">
+                <img class="imagem-logo-nav responsive-img" src="media/lupa.png" width="180px"
+                     height="220px"/>
+            </a>
+            <div class="left-align">
+                <h5>Quem foi o Culpado?</h5>
+                <form method="POST" name="checar">
+                    {% csrf_token %}
+                    {% form form=form %}{% endform %}
+                    <button class="light-blue darken-4 waves-effect waves-light btn btn-large col s10 offset-s1"
+                            type="submit"
+                            name="action">
+                        Checar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
