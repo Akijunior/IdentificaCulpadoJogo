@@ -1,0 +1,9 @@
+p.resposta-correta {
+    color: #00E676;
+    font-size: 19px;
+}
+
+p.resposta-errada {
+    color: #B71C1C;
+    font-size: 19px;
+}

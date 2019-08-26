@@ -7,7 +7,21 @@ button.light-blue.darken-4.waves-effect.waves-light.btn.btn-large.col.s10.offset
     margin-top: 5%;
 }
 
-.resposta {
-    font-size: 20px;
-    color: midnightblue;
+li.opcao {
+    font-size: 16px;
+}
+
+.col.s6.z-depth-3.opcoes {
+    padding: 0 0 0 2%;
+}
+
+p.titulo {
+    color: #3949ab;
+    margin-bottom: -5.65%;
+    margin-top: 2%;
+}
+
+.inline-icon {
+   vertical-align: bottom;
+   font-size: 18px !important;
 }

@@ -1,35 +1,14 @@
 import random
 
+from utils.investigacao.opcoes import suspeitos, armas, locais, respostas
+
 
 def identificarCulpado():
-
-    suspeitos = ['Charles B.Abbage', 'Donald Duck Knuth',
-                 'Ada L.Ovelace', 'Alan T.Uring',
-                 'Ivar J.Acobson', 'Ras Mus Ler Dorf'
-                 ]
-
-    locais = [
-        'Redmond', 'Palo Alto',
-        'San Francisco', 'Tokio',
-        'Restaurante no Fim do Universo', 'São Paulo',
-        'Cupertino', 'Helsinki',
-        'Maida Vale', 'Toronto'
-    ]
-
-    armas = [
-        'Peixeira', 'DynaTAC 8000  X(o primeiro aparelho celular do mundo)',
-        'Trezoitão', 'Trebuchet',
-        'Maça', 'Gládio'
-    ]
-
     acertou = False
 
     assassinoCerto = random.choice(range(len(suspeitos)))
     armaCerta = random.choice(range(len(armas)))
     localCerto = random.choice(range(len(locais)))
-
-    respostas = ['Você solucionou o caso!', '1 - Assassino incorreto',
-                 '2 - Arma incorreta', '3 - Local incorreto']
 
     while (not acertou):
 
@@ -47,21 +26,7 @@ def identificarCulpado():
 
         print(assassinoCerto, ' - ', armaCerta, ' - ', localCerto)
 
-        if (assassino == assassinoCerto and arma == armaCerta and local == localCerto):
-            acertou = True
-            print(respostas[0], '\n')
-
-        elif (assassino != assassinoCerto):
-            print(respostas[1], '\n')
-
-        elif (arma != armaCerta):
-            print(respostas[2], '\n')
-
-        elif (local != localCerto):
-            print(respostas[3], '\n')
-
-        else:
-            print(respostas[random.choice(1, len(respostas))], '\n')
+        acertou = checaResposta(assassino, assassinoCerto, arma, armaCerta, local, localCerto)
 
     '''
     Se a teoria estiver correta (assassino, local e arma corretos), ela responde 0. 
@@ -73,10 +38,38 @@ def identificarCulpado():
     ela retorna um valor arbitrário entre as que estão incorretos (isso é totalmente aleatório).
     '''
 
+def checaResposta(assassino, assassinoCerto, arma, armaCerta, local, localCerto):
+
+    acertou = False
+    if (assassino == assassinoCerto and arma == armaCerta and local == localCerto):
+        acertou = True
+        print(respostas[0], '\n')
+
+    elif (assassino != assassinoCerto):
+        print(respostas[1], '\n')
+
+    elif (arma != armaCerta):
+        print(respostas[2], '\n')
+
+    elif (local != localCerto):
+        print(respostas[3], '\n')
+
+    else:
+        print(respostas[random.choice(1, len(respostas))], '\n')
+
+    return acertou
+
+
 def listarOpcoes(lista):
     print('\n')
     for i in range(len(lista)):
-        print("%d - %s" % (i, lista[i]))
+        print("%d - %s" % (i + 1, lista[i]))
     print('\n')
 
-identificarCulpado()
+def listarOpcoesView(lista):
+    listaAdaptada = []
+    for i in range(len(lista)):
+        listaAdaptada.append("%d - %s" % (i + 1, lista[i]))
+    return listaAdaptada
+
+# identificarCulpado()

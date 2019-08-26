@@ -2,23 +2,54 @@
 {% block content %}
     {% load material_form %}
 
-    <div class="col s3"></div>
+    <div class="col s6 z-depth-3 opcoes">
+        <div class="left-align opcao">
+            <p class="titulo">Suspeitos: </p>
+            <ul>
+                {% for suspeito in suspeitos %}
+                    <li class="opcao">{{ suspeito }}</li>
+                {% endfor %}
+            </ul>
+
+            <p class="titulo">Armas: </p>
+            <ul>
+                {% for arma in armas %}
+                    <li class="opcao">{{ arma }}</li>
+                {% endfor %}
+            </ul>
+
+            <p class="titulo">Locais: </p>
+            <ul>
+                {% for local in locais %}
+                    <li class="opcao">{{ local }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
     <div class="col s6 z-depth-3">
         <div class="flow-text">
-
             <a href="{% url 'home' %}">
                 <img class="imagem-logo-nav responsive-img" src="media/lupa.png" width="180px"
                      height="220px"/>
             </a>
             <div class="left-align">
+                {% if mensagemSucesso %}
+                    <p class="resposta-correta">{{ mensagemSucesso }}</p>
+                {% endif %}
+
+                {% if mensagemErro %}
+                    <p class="resposta-errada">{{ mensagemErro }}</p>
+                {% endif %}
+
                 <h5>Quem foi o Culpado?</h5>
                 <form method="POST" name="checar">
                     {% csrf_token %}
                     {% form form=form %}{% endform %}
-                    <button class="light-blue darken-4 waves-effect waves-light btn btn-large col s10 offset-s1"
-                            type="submit"
-                            name="action">
-                        Checar
+
+                    <button type="submit"
+                            class="light-blue darken-4 waves-effect waves-light btn btn-large col s10 offset-s1">
+                        <i class="material-icons right">search</i> Checar
                     </button>
                 </form>
             </div>
